@@ -1,0 +1,103 @@
+1. Added input validation to check if weight and height are positive numbers. If either of them is non-positive, the function returns an error message.
+2.Changed the conditions in the if-else statements to use the correct logical operators (&& for "and" instead of || for "or").
+3.Adjusted the upper limits of the BMI ranges to avoid overlaps and ensure correct classification.
+-----------------------------------------------------------------------------------------------
+Reduce Method Approach:
+Uses the reduce() method on the cart array.
+The reduce() method takes an accumulator and the current item as parameters.
+Calculates the cost of each item (price * quantity) and adds it to the accumulator.
+Returns the final accumulated total after processing all items in the cart.
+This reduce() method approach is more concise and leverages a built-in JavaScript array method designed for such calculations, making the code cleaner and potentially easier to understand for developers familiar with functional programming concepts.
+
+Time Complexity:
+The time complexity of this function is O(n), where n is the number of items in the cart array.
+This complexity arises from the reduce() method, which iterates through each item in the cart array exactly once, performing a constant amount of work for each item.
+
+Space Complexity:
+The space complexity of this function is O(1), which means it uses a constant amount of additional space regardless of the size of the cart array.
+The space used by the function is primarily for the total variable, which stores the cumulative cost as the function iterates through the cart array.
+Since the space used remains constant regardless of the input size, the space complexity is O(1).
+-----------------------------------------------------------------------------------------------
+Prime Numbers:
+
+Initialization:
+Creates an empty array primes to store the prime numbers.
+
+isPrime Helper Function:
+Defines a helper function isPrime(num) that checks whether a number is prime.
+If the number is less than or equal to 1, it returns false because prime numbers are greater than 1.
+It iterates through numbers from 2 to the square root of the given number (Math.sqrt(num)). If any of these numbers divide num evenly (i.e., num % i === 0), then num is not prime, so it returns false.
+If the loop completes without finding a divisor, it returns true, indicating that num is prime.
+
+Main Loop:
+Iterates through numbers from 2 to n using a for loop.
+For each number i in this range, it checks if i is prime by calling the isPrime helper function.
+If i is prime (isPrime(i) returns true), it adds i to the primes array using primes.push(i).
+
+Return:
+Returns the primes array containing all prime numbers found in the range from 2 to n.
+
+This approach is efficient because it uses the concept of prime numbers (numbers greater than 1 that have no positive divisors other than 1 and themselves) and utilizes the isPrime helper function to determine if a number is prime or not. By checking each number in the range only up to its square root, it reduces the number of iterations needed, making the function reasonably fast even for large n values.
+
+Space Complexity:
+Space complexity is O(n), where n is the input number.
+
+Time Complexity:
+The isPrime function checks if a number is prime by iterating up to the square root of the number.
+In the worst case, the isPrime function takes O(sqrt(n)) time.
+The findPrimes function calls isPrime for each number from 2 to n, leading to a time complexity of O(n * sqrt(n)).
+
+
+-----------------------------------------------------------------------------------------------
+
+Splitting the String:
+It starts by splitting the input string str into an array of characters using split(""). This creates an array arr where each element represents a character from the original string.
+
+Swapping Consecutive Characters:
+The function then iterates through the arr array using a for loop with an increment of 2 (i = i + 2). This means it processes every other element in the array.
+Inside the loop, it uses destructuring assignment [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]] to swap the values of arr[i] and arr[i + 1]. This effectively swaps consecutive characters in the string.
+For example, if arr = ['a', 'b', 'c', 'd', 'e'], after one iteration of the loop, arr becomes ['b', 'a', 'd', 'c', 'e'].
+
+Joining the Array Back to a String:
+Finally, the function joins the modified array arr back into a string using join(""), which concatenates all elements of the array without any separator.
+
+Return:
+Returns the modified string where consecutive characters have been swapped.
+
+For instance, if you call swapConsecutiveCharacters("hello"), it will return "ehlol", as it swaps the consecutive characters as described above.
+
+
+Space Complexity:
+Creates a new array to store the characters of the input string.
+Space complexity is O(n), where n is the length of the input string.
+
+Time Complexity:
+Iterates through the array in a single loop, swapping elements in constant time.
+Time complexity is O(n), where n is the length of the input string.
+-----------------------------------------------------------------------------------------------
+
+This arrayIntersection function calculates the intersection of two arrays by counting the occurrences of elements in array1 and then matching those counts against elements in array2. Here's how it works step by step:
+
+Counting Occurrences in array1:
+It initializes a Map called countMap to store the count of each unique element in array1.
+It then iterates through each element (item) in array1 using a for...of loop.
+For each item, it checks if countMap already has an entry for that item. If it does, it increments the count by 1; otherwise, it sets the count to 1.
+
+Finding Intersection:
+After counting the occurrences in array1, it initializes an empty array result to store the intersection of array1 and array2.
+It then iterates through each element (item) in array2 using another for...of loop.
+For each item, it checks if countMap has a positive count for that item (i.e., countMap.get(item) > 0). If it does, it adds the item to the result array and decrements the count of that item in countMap by 1.
+This process ensures that elements in result are those that exist in both array1 and array2, considering their respective counts in array1.
+
+Return Intersection:
+Finally, it returns the result array containing the intersection of array1 and array2.
+For example, if you call arrayIntersection([1, 2, 2, 3], [2, 2, 3, 4]), the function would return [2, 2, 3] because the intersection includes the common elements between the two arrays, considering their counts.
+
+Space Complexity:
+Additional space is used for the countMap and the result array.
+Space complexity is O(m + n), where m is the size of array1, n is the size of array2, and the space used by countMap depends on the number of unique elements in array1.
+
+Time Complexity:
+Creating countMap by iterating through array1 takes O(m) time, where m is the size of array1.
+Checking for intersection and updating result by iterating through array2 takes O(n) time, where n is the size of array2.
+Overall time complexity is O(m + n), which is efficient for most practical cases.
